@@ -7,4 +7,3 @@ class Urun{
   Urun(this._ad, this._aciklama, this._fiyat);
   Urun.withId(this._id,this._ad, this._aciklama, this._fiyat);
 }
-
