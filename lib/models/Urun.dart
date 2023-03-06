@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Urun {
   int _id;
   String _ad;
@@ -30,4 +28,32 @@ class Urun {
   set fiyat(double value) {
     _fiyat = value;
   }
+
+  Map<String, dynamic> mapYap() {
+    //    <key value> Neden dynamic tipi? çünkü dynamik yapısı bütün veri türlerini karşılıyor
+    var map = Map<String, dynamic>(); // map oluşturduk
+
+    map["ad"] = _ad;
+    map["aciklama"] = _aciklama;
+    map["fiyat"] = _fiyat;
+    //Map'in öğelerini oluşruduk
+
+    //Database'in ID verip vermediğini sorgulatacağız
+    if (_id != null) {
+      map["id"] = _id;
+    } //ID değeri null ise buradan bir ID ver
+
+    return map;
+  }
+
+  //map'i ürüne çevirme
+  Urun.fromObject(dynamic o) {
+    this._id = o["id"];
+    this._ad = o["ad"];
+    this._aciklama = o["aciklama"];
+    this._fiyat = double.tryParse(o["fiyat"].toString());
+    //sqfLite'da sadece number değeri tutulduğu için dönüştürme işlemi gerçekleştireceğiz
+  }
+
 }
+
