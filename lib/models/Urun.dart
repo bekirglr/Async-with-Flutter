@@ -51,7 +51,7 @@ class Urun {
     this._id = o["id"];
     this._ad = o["ad"];
     this._aciklama = o["aciklama"];
-    this._fiyat = double.tryParse(o["fiyat"].toString());
+    this._fiyat = o["fiyat"];
     //sqfLite'da sadece number değeri tutulduğu için dönüştürme işlemi gerçekleştireceğiz
   }
 
