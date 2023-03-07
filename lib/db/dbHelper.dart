@@ -53,4 +53,16 @@ class DbHelper {
         "Creat table $tblUrun($colId integer primary key, $colAd text, $colAciklama text, $colFiyat int)");
     //execute sql cümleciğini çalıştırmaya yarıyor
   }
+
+  Future<int> ekle(Urun urun) async {
+    Database db = await this.db;
+    var sonuc = await db.insert(tblUrun, urun.mapYap());
+    return sonuc;
+  }
+
+  Future<int> getUrunler() async {
+    Database db = await this.db;
+    var sonuc = await db.rawQuery("SELECT * FROM $tblUrun");
+    return sonuc;
+  }
 }
